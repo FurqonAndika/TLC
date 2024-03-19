@@ -1,0 +1,22 @@
+#define led 3
+#define button 4
+
+void setup(){
+  pinMode(led,OUTPUT);
+  pinMode(button, INPUT_PULLUP);
+}
+bool prev_state= false;
+bool now_state = false;
+bool led_state = false;
+void loop(){
+  now_state = !digitalRead(button);
+  if(now_state==true){
+    if (prev_state!=now_state){
+      // prev_state=now_state;
+      led_state = !led_state;
+      digitalWrite(led, led_state);
+      
+    }
+  }
+  prev_state = now_state;
+}
